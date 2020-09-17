@@ -60,7 +60,7 @@ subjects:
 
 Retrieve the service account token for `jonathan`:
 ```
-kubectl describe secret spotinst-secret
+kubectl describe secret jonathan-secret
 ```
 
 You can then login on the k8s dashboard by using the token authentication! yay!
