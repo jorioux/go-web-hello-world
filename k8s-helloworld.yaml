@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-web-hello-world-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: go-web-hello-world
+  template:
+    metadata:
+      labels:
+        app: go-web-hello-world
+    spec:
+      containers:
+      - name: go-web-hello-world
+        image: jorioux/go-web-hello-world:v0.1
+        ports:
+        - containerPort: 8081
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: go-web-hello-world
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 31080
+      targetPort: 8081
+  selector:
+    app: go-web-hello-world
